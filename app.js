@@ -38,7 +38,7 @@ for (let i = 0; i < Number(son); i++) {
   ranglar.innerHTML += `
     <li class="list-style" style="color:${color}"> ${color} 
       <div class="all-btn"> 
-        <button class="button">Delete</button>
+        <button class="button"data-color=${color} >Delete</button>
         <button class="button" data-color=${color}>Apply</button>
       </div>
     </li>
@@ -48,6 +48,8 @@ for (let i = 0; i < Number(son); i++) {
 document.addEventListener("click", (e) => {
   if (e.target.textContent === "Delete") {
     e.target.parentElement.parentElement.remove();
+    const color2 = e.target.dataset.color;
+    modal.style.backgroundColor = color2;
   } else if (e.target.textContent === "Apply") {
     const color = e.target.dataset.color;
     // console.log(color);
