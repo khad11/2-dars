@@ -4,26 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./main/style.css" />
   </head>
-  <style>
-    div {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-    }
-    span {
-      display: none;
-    }
-  </style>
   <body>
-    <!-- <div>
-      <h1 class="hour"></h1>
-      <h2></h2>
-    </div> -->
-    <div>
-      <h1></h1>
+    <div class="main">
+      <!-- show-btn -->
+      <button class="btn show-btn" id="show-btn">barcha ranglar</button>
+
+      <!-- MODAL -->
+      <div class="modal hidden" id="modal">
+        <div class="color-main">
+          <h2>Colors</h2>
+          <button class="close-btn" id="close-btn">
+            <img
+              src="./img/close-circle.svg"
+              alt="close"
+              width="20"
+              height="20"
+            />
+          </button>
+        </div>
+        <ul class="span" id="span"></ul>
+        <button class="btn clr-btn" id="clr-btn">clear</button>
+      </div>
     </div>
+    <!-- overlay -->
+    <!-- <div class="overlay" id="overlay"></div> -->
+    <!-- js uladim  -->
     <script src="./app.js"></script>
   </body>
 </html>

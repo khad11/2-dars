@@ -1,11 +1,28 @@
-// const parag = document.querySelector("p");
-// console.log(parag.textContent);
-// console.log(parag.innerText);
-// console.log(parag.innerHTML);
+const showBtn = document.querySelector("#show-btn");
+const modal = document.querySelector("#modal");
+const closeBtn = document.querySelector("#close-btn");
+const clearBtn = document.querySelector("#clr-btn");
 
-// const timee = document.querySelector(".hour");
-// const text = document.querySelector("h2");
-const son = prompt("nechta rang chiqsin ");
+showBtn.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+});
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key == "Escape") {
+    modal.classList.add("hidden");
+  }
+});
+// clear button uchun
+clearBtn.addEventListener("click", () => {
+  ranglar.textContent = "";
+});
+// closeBtn.addEventListener("click", () => {
+//   getRandomColor;
+// });
+// bu rangllarga oid
+const son = 10;
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
   let color = "#";
@@ -15,15 +32,25 @@ function getRandomColor() {
 
   return color;
 }
-const ranglar = document.querySelector("h1");
+const ranglar = document.querySelector(".span");
 for (let i = 0; i < Number(son); i++) {
   const color = getRandomColor();
-  ranglar.innerHTML += `<li style="color:${color}"> ${color} </li>`;
+  ranglar.innerHTML += `
+    <li class="list-style" style="color:${color}"> ${color} 
+      <div class="all-btn"> 
+        <button class="button">Delete</button>
+        <button class="button" data-color=${color}>Apply</button>
+      </div>
+    </li>
+  `;
 }
-// console.log();
-// setInterval(() => {
-//   let colorr = getRandomColor();
-//   timee.textContent = new Date().toLocaleTimeString();
-//   timee.style.color = colorr;
-//   text.textContent = colorr;
-// }, 1000);
+
+document.addEventListener("click", (e) => {
+  if (e.target.textContent === "Delete") {
+    e.target.parentElement.parentElement.remove();
+  } else if (e.target.textContent === "Apply") {
+    const color = e.target.dataset.color;
+    // console.log(color);
+    document.body.style.backgroundColor = color;
+  }
+});
